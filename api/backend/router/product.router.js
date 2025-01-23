@@ -5,7 +5,7 @@ const router=Router();
 
 router.get('/getproducts',getproducts)
 router.post('/createProduct',addproducts)
-router.delete('/deleteProduct',deleteproducts);
-router.param('/updateProduct',updateproduct);
+router.delete('/deleteProduct/:id',deleteproducts);
+router.param('/updateProduct/:id',updateproduct);
 
 module.exports=router;

@@ -1,0 +1,30 @@
+.main{
+    
+margin: 20px;
+   height: auto;
+   width: 300px;
+   align-items: center;
+   background-color: #f7f7f7;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+border: 1px solid black;
+}
+
+.main img{
+
+    height: 200px;
+
+}
+
+.main p{
+  font-variant-caps: petite-caps;
+}
+
+.main h2{
+    font-size: 25px;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap:10px;
+}

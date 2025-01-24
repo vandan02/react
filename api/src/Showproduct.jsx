@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js'; // For modal JavaScript functionality
+import 'bootstrap/dist/js/bootstrap.bundle.min.js'; 
 import AddProduct from './addproduct';
 
 const Showproduct = ({ name, title, price, description, category, image, _id, onDelete }) => {
   const [showModal, setShowModal] = useState(false);
 
-  // Function to toggle the modal
+
   const toggleModal = () => {
     setShowModal(!showModal);
   };
@@ -27,9 +27,9 @@ const Showproduct = ({ name, title, price, description, category, image, _id, on
         </button>
       </div>
 
-      {/* Bootstrap Modal */}
-      {showModal && (
-        <div className="modal show d-block" tabIndex="-1" role="dialog">
+    
+      {
+        showModal?<div className="modal show d-block" tabIndex="-1" role="dialog">
           <div className="modal-dialog modal-dialog-scrollable" role="document">
             <div className="modal-content">
               <div className="modal-header">
@@ -44,14 +44,13 @@ const Showproduct = ({ name, title, price, description, category, image, _id, on
                 <button type="button" className="btn btn-secondary" onClick={toggleModal}>
                   Close
                 </button>
-                <button type="button" className="btn btn-primary">
-                  Save Changes
-                </button>
+               
               </div>
             </div>
           </div>
         </div>
-      )}
+        :""
+      }
     </div>
   );
 };

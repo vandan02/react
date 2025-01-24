@@ -71,7 +71,7 @@ try {
           value={product.img}
           onChange={(e) => setProduct({ ...product, image: e.target.value })}
         />
-        <button type="submit">Add Product</button>
+        <button type="submit" >{changedata._id? "Update Product" : "Add Product"} </button>
       </form>
       
    

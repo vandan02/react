@@ -3,26 +3,32 @@ import React, { useState } from "react";
 import API from "../config/api";
 import Product from "./product";
 import './index.css'
-const AddProduct = () => {
+import axios from "axios";
+const AddProduct = ({changedata={}}) => {
+  console.log(changedata);
+  
   const [product, setProduct] = useState({
-    name: "",
-    price: "",
-    description: "",
-    category: "",
-    image:'',
+    name:changedata.name?changedata.name: "",
+    price:changedata.price?changedata.price:"",
+    description:changedata.description?changedata.description:"",
+    category:changedata.category?changedata.category: "",
+    image:changedata.image?changedata.image:"",
   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log(product);
-    
 try {
+  if(changedata?._id){
+    await API.patch(`/updateProduct/${changedata._id}`, product );
+  }else{
+    const response = await API.post("/createProduct",product);
      
-        const response = await API.post("/createProduct",product);
-        console.log("Product added successfully:", response.data);
   
-        setProduct({ name: "", price: "", description: "", category: "" });
+    setProduct({ name: "", price: "", description: "", category: "" });
+  }
+     
+       
 } catch (error) {
   console.log(error.message);
   
@@ -68,7 +74,7 @@ try {
         <button type="submit">Add Product</button>
       </form>
       
-      <Product/>
+   
       
     </div>
   );

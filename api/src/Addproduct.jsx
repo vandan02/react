@@ -6,7 +6,7 @@ import './index.css'
 import axios from "axios";
 const AddProduct = ({changedata={}}) => {
   console.log(changedata);
-  
+
   const [product, setProduct] = useState({
     name:changedata.name?changedata.name: "",
     price:changedata.price?changedata.price:"",
@@ -17,25 +17,17 @@ const AddProduct = ({changedata={}}) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
 try {
   if(changedata?._id){
     await API.patch(`/updateProduct/${changedata._id}`, product );
   }else{
     const response = await API.post("/createProduct",product);
-     
-  
     setProduct({ name: "", price: "", description: "", category: "" });
-  }
-     
-       
+  }   
 } catch (error) {
   console.log(error.message);
-  
-}
-  
+} 
   };
-
   return (
     <div id="main">
       <form onSubmit={handleSubmit}>
@@ -73,15 +65,7 @@ try {
         />
         <button type="submit" >{changedata._id? "Update Product" : "Add Product"} </button>
       </form>
-      
-   
-      
     </div>
-  );
-
- 
+  ); 
 };
-
-
-
 export default AddProduct;
